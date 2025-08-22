@@ -1,31 +1,41 @@
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet ,FlatList} from 'react-native';
+import ProductListitem from '@/components/ProductListitem';
 import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import product from '@/assets/data/product';
+import { Text, View} from '@/components/Themed';
+import { Product } from '@/types/types';
 
-export default function TabOneScreen() {
+export default function MenuScreeen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-    </View>
+    <FlatList
+    // FlatList is use for infinite srcolling in app
+    data={product}
+    renderItem={({item})=><ProductListitem product={item}/>}
+    numColumns={2}
+    contentContainerStyle={{gap:10,padding:10}}
+    // renderItem take a function
+    />
+    // // <View > 
+    //   {/* <ProductListitem product={product[5]}/>
+    //   <ProductListitem product={product[1]}/> */}
+    
+    // // </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   title: {
+//     fontSize: 20,
+//     fontWeight: 'bold',
+//   },
+//   separator: {
+//     marginVertical: 30,
+//     height: 1,
+//     width: '80%',
+//   },
+// });
