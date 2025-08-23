@@ -6,7 +6,7 @@ type ProductListitemProps={
 product:Product
 }
 export const defaultPizzaImage='https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png'
-const ProductListitem = ({ product }:ProductListitemProps) => {
+const ProductListItem = ({ product }:ProductListitemProps) => {
     return (
         <View>
             <Image source={{ uri: product.image || defaultPizzaImage }} style={styles.image} />
@@ -16,7 +16,7 @@ const ProductListitem = ({ product }:ProductListitemProps) => {
         </View>
     )
 };
-export default ProductListitem;
+export default ProductListItem;
 
 const styles = StyleSheet.create({
     container: {
