@@ -8,16 +8,22 @@ import {
 import { ColorSchemeName } from "react-native";
 import { useFrameworkReady } from "@/hooks/useFrameworkReady";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import CartProvider from "@/providers/CartProvider";
 export default function RootLayout() {
   useFrameworkReady();
   const colorScheme = useColorScheme();
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack >
-        <Stack.Screen name="(tabs)"  options={{ headerShown: false }}/>
-        <Stack.Screen name="cart" options={{presentation:"modal",animation:"slide_from_bottom"}}/>
-      </Stack>
+      <CartProvider>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen
+            name="cart"
+            options={{ presentation: "modal", animation: "slide_from_bottom" }}
+          />
+        </Stack>
+      </CartProvider>
     </ThemeProvider>
   );
 }
