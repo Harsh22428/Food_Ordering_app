@@ -1,23 +1,17 @@
-// import { Stack } from 'expo-router';
-// import { StatusBar } from 'expo-status-bar';
-// import { ThemeProvider, DarkTheme, DefaultTheme } from '@react-navigation/native';
-// import { ColorSchemeName } from 'react-native';
-// import { useFrameworkReady } from '@/hooks/useFrameworkReady';
-// import { useColorScheme } from '@/hooks/useColorScheme';
-// export default function RootLayout(){
-//    useFrameworkReady()
-//    const colorScheme = useColorScheme();
+import { Link } from "expo-router";
+import { View } from "react-native";
+import Button from "@/components/Button";
 
-//     return (
-       
-//     )
-// }
-
-import { View,Text } from "react-native"
-export default function Index(){
-    return (
-        <View>
-            <Text>Index</Text>
-        </View>
-    )
-}
+const index = () => {
+  return (
+    <View style={{flex:1,justifyContent:'center',padding:10}}> 
+      <Link href={"/(user)" as any} asChild>
+      <Button text="User" />
+      </Link>
+      <Link href={'/(admin)' as any} asChild>
+      <Button text="Admin" />
+      </Link>
+    </View>
+  );
+};
+export default index;

@@ -2,7 +2,7 @@ import { View, Image, Text, StyleSheet, TouchableOpacity, Pressable } from "reac
 import Colors from "@/constants/Colors";
 import products from "@/assets/data/product";
 import { Product } from "@/types/types";
-import { Link } from "expo-router";
+import { Link, useSegments } from "expo-router";
 import { router } from "expo-router";
 
 type ProductListitemProps = {
@@ -11,8 +11,9 @@ type ProductListitemProps = {
 export const defaultPizzaImage =
   "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/food/extravaganzza.png";
 const ProductListItem = ({ product }: ProductListitemProps) => {
+  const segments=useSegments();
   return (
-    <Link href={`/menu/${product.id}`} asChild>
+    <Link href={`${segments[0]}/menu/${product.id}`} asChild>
     {/* /* <TouchableOpacity style={styles.container} onPress={() => router.push('/product')}> */}
 
     {/* // touch + able + opacity => touch karne par opacity backgriund me kam hoyi hai we can use instead of <Link>

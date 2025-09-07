@@ -16,11 +16,13 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <CartProvider>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack initialRouteName="index">
+          {/* this property initialRouteName render the first screen which is index */}
+          <Stack.Screen name="(user)" options={{ headerShown: false }} />
+          <Stack.Screen name="(admin)" options={{ headerShown: false }} />
           <Stack.Screen
             name="cart"
-            options={{ presentation: "modal", animation: "slide_from_bottom" }}
+            options={{ presentation: "modal" }}
           />
         </Stack>
       </CartProvider>
