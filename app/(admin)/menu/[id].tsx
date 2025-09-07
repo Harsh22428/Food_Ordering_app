@@ -20,23 +20,23 @@ function ProductDetailsScreen() {
   const {addItem}=useCart()
   const product = products.find((p) => p.id.toString() == id);
   const sizes:PizzaSize[] = ["S", "M", "L", "XL"];
-  const addToCart=()=>{
-    if(!product){
-      return ;
-    }
-    addItem(product,selectedSize)
-    router.push('/cart')
-   console.log("Adding to cart size "+selectedSize)
-  }
-  if (!product) {
-    return <Text>Product not found</Text>;
-  }
+  // const addToCart=()=>{
+  //   if(!product){
+  //     return ;
+  //   }
+    // addItem(product,selectedSize)
+    // router.push('/cart')
+  
+  // if (!product) {
+  //   return <Text>Product not found</Text>;
+  // }
   return (
     <ScrollView style={styles.container}>
       <Stack.Screen
             options={{
+              title:'Menu',
               headerRight: () => (
-                <Link href="/(admin)/menu/[id]" asChild>
+                <Link href={`/(admin)/menu/create?id=${id}`} asChild>
                   <Pressable>
                     {({ pressed }) => (
                       <FontAwesome
@@ -52,7 +52,7 @@ function ProductDetailsScreen() {
             }}
          />
       <Stack.Screen
-        options={{ title: product.name, headerTitleAlign: "center" }}
+        options={{ title: product.name }}
       />
       <Image
         source={{ uri: product.image || defaultPizzaImage }}
@@ -60,7 +60,7 @@ function ProductDetailsScreen() {
       />
       <Text style={styles.title}>{product.name}</Text>
       <Text style={styles.price}>${product.price}</Text>
-      <Button onPress={addToCart} text="Add to Cart"/>
+     
     </ScrollView>
   );
 }
