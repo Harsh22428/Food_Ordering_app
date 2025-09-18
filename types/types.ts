@@ -6,6 +6,13 @@ export type Product={
 };
 
 export type PizzaSize='S'|'M'|'L'|'XL';
+export const OrderStatusList: OrderStatus[] = [
+  'New',
+  'Cooking',
+  'Delivering',
+  'Delivered',
+];
+
 export type OrderStatus = 'New' | 'Cooking' | 'Delivering' | 'Delivered';
 
 export type Order = {
